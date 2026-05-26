@@ -1,13 +1,8 @@
-import dotenv from 'dotenv';
-dotenv.config()
-
-const theAPIkey = import.meta.env.VITE_APIkey;
-const thedatabaseURL = import.meta.env.VITE_DATABASE_URL;
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: theAPIkey,
+  apiKey: "AIzaSyB8Er_wMuWgRWYsk_Msxu1lpYqWlSYCjVE",
   authDomain: "europa-starships.firebaseapp.com",
-  databaseURL: thedatabaseURL,
+  databaseURL: "https://europa-starships-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "europa-starships",
   storageBucket: "europa-starships.firebasestorage.app",
   messagingSenderId: "649670901132",

@@ -1,6 +1,6 @@
 
 console.log("Europa Starships Online, loading order form...")
-console.log("Europa Starships System Version 1.2.5 'Logo' Online.")
+console.log("Europa Starships System Version 1.2.6 'Home' Online.")
 
 
 function writeForm(){
