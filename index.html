@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Europa Starships</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width">
+  <!-- <link rel="icon" type="image/x-icon" href="assets/images/favicon.png"> -->
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <!-- firebase start ****************************************-->
+  <!-- Firebase App (core Firebase SDK) is always required & must be listed 1st -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+  <!-- firebase end ******************************************-->
+  <script type="module" src="fb_setup.js"></script>
+  <script src="fb_io.js"></script>
+  <script src="./script.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "dotenv": "https://esm.sh"
+    }
+  }
+</script>
+</head>
+<body>
+  <div class="container">
+    <!--<h1>Europa Starships</h1>
+    <h2>A Luna Industries Subdivision</h2>
+    <p style="font-style: italic"><small>Only The Best Quality Starships!</small></p> -->
+    <img src="Europa Starships - Luna Industries - nobg.png" width="580" height="345" class="center-img" alt="Europa Starships Logo">
+    <p id="ThankYou"></p>
+    <button id="Login" onclick="fb_login()">Login with Google</button><button id="Logout" style="display: none;" onclick="fb_logout()">Logout</button>
+
+<div><p> </p></div>
+    <form id="shipForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="favoriteFruit">Ship to Order:</label>
+      <input type="text" id="ShipOrder" name="favoriteFruit" required />
+
+      <label for="fruitQuantity">How many ships do you require?</label>
+      <input type="number" id="shipQuantity" name="fruitQuantity" required />
+
+      <label for="Reason">Purpose of your purchase?</label>
+      <input type="text" id="OrderReason" name="OrderReason" required />
+
+
+      <!-- add more fields here -->
+    </form>
+
+    <button id="submit" style="display: none;" onclick="fb_write()">Submit</button>
+
+    <p id="statusMessage">Waiting for Order...</p>
+    <div></div>
+
+        <p><small>Please Fill out the Form if you wish to order one of our Quality Guaranteed Starships. Incorrect Spelling will cause our administrators to assume which one you meant, which may cause a incorrect order and/or no shipment. It is reccomended to enter the designation of the ship. (e.g X-66 for our Starfighter)</small></p>
+  </div>
+  <div><p> </p></div>
+<div class="container">
+<h2>STARSHIP CATALOGUE</h2>
+<p>Small Sizes:</p>
+<p>X-66 Starfighter    [75000SC]</p>
+<p style="font-style: italic"><small>Custom-made starfighter with quad M-235 Gatling Laser, Six Mk9 Zeus Air-Air Missiles, and Four Mk3 CAS Air-Ground Missiles.</small></p>
+<p>G5-F "Quantum" Transport     [60000SC]</p>
+<p style="font-style: italic"><small>A decent transport, wheather it be Personal Transportation, Small-Scale Cargo, or Military Troop Transporting, the G5-f is perfect for the task.</small></p>
+<p>F-99 Stealth Starfighter (Mars Edition)    [99999.99SC]</p>
+<p style="font-style: italic"><small>The latest in North American Federation Starfighters, the F-99 is a formidable stealth fighter, with its non-relective micrometeor black coating, Four Mk55 Thermonuclear Air-Air or Air-Ground Missiles and single Mk2 Railcannon.</small></p>
+
+
+
+<p>Medium Sizes:</p>
+
+<p>J9-A "Otago" Space Destroyer    [250000SC]</p>
+<p style="font-style: italic"><small>Custom Design originally created for the NZSDF (New Zealand Space Defense Force) in 2075 after space warfare became common, the J9-A is still a formidable Space Destroyer even today! It has three 350mm Railguns, 72 Air-Air / Air-Ground "Storm" missiles, 12 Space Torpedos, and shield jamming abilities.</small></p>
+
+<p>V9-G Scotland-Class Light Cruiser    [450000SC]</p>
+<p style="font-style: italic"><small>One of the highest quality starships to come out of Brittania Shipyards in the last 200 years, now upgraded with actually good armour, shields, systems, and weapons! It is equipped with four anti-starfighter 250mm autocannons, ten 450mm railguns, and a Mark VI Starship Shield.</small></p>
+
+<p></p>
+<p style="font-style: italic"><small></small></p>
+
+
+<p>Large Sizes:</p>
+
+<p>A5-f Wellington-Class Battleship [5000000SC]</p>
+<p style="font-style: italic"><small>The largest, most advanced, and fastest space battleship on the market, designed here at Europa Starships! 50 metres of armour, 8 quad-barrel 750mm Railcannons, 12 Anti-Starfighter 250mm autocannons, custom Mark XVI Capital Ship-Class Shield, and 80 IPBMs (Inter-Planetary Ballistic Missle).</small></p>
+
+<p>T-1 Tokyo-Class Carrier [5000000SC]</p>
+<p style="font-style: italic"><small>Custom Space Supercarrier designed for the Japanese Space Fleet in 2102, fast enough that you can call comets slow. 128 X-66 Starfighters, 20 450mm Railcannons, 12 Anti-Starfighter 250mm Autocannons.</small></p>
+
+
+</div>
+<p> </p>
+<div class="container">
+<h2>ANTIQUES</h2>
+<h4><small>Primarily antique spacecraft from the early days of space travel, modernised with FTl engines, automatic recovery and autopilot systems naturally.  All antiques are numbered by A-[number]</small></h4>
+
+<p>A1 Mercury [500000SC]</p>
+<p style="font-style: italic"><small>One of the earliest manned spacecraft designed by the North American Aeronautics and Space Agency (NAASA) when it was still called the National Aeronautics and Space Agency (NASA) during the days of the United States.</small></p>
+
+
+<p>A2 Apollo [600000SC]</p>
+<p style="font-style: italic"><small>Modernised version of the old Apollo Command and Service Module, famous for its use in the first manned lunar missions over 200 years ago in the 1950s and 60s. Optional Lunar Excursion Module (LEM) can be added by stating purcahse intent as historical mission replication.</small></p>
+
+
+<p>A3 Soyuz [350000SC]</p>
+<p style="font-style: italic"><small>Replica of the main manned spacecraft used by the Union of Soviet Socialist Republics and Russian Federation from 1978 to 2059 when it was then replaced by the "Federatsiya" (Federation), which is still in use today by some small companies.</small></p>
+
+
+<p>A4-1 / A4-2 Space Shuttle(s) [6500000SC]</p>
+<p style="font-style: italic"><small>The first spaceplane ever designed. It built the original structure of the International Spaceport when it was still a few small modules and was named the International Space Station. Replica "Buran" Soviet Space Shuttle also avaliable under the designation "A4-2"</small></p>
+
+
+<p>A5 Artemis [5500000SC]</p>
+<p style="font-style: italic"><small>The CSMs for the Artemis Program a little over 100 years ago, they helped with the return to Luna and helped the start of the Ares Missions about 85 years ago that put the first people on Mars. Optional Lunar Excusion Module (LEM) or Mars Flyby System (MFS) avaliable by stating purchase intent as historical mission replication.</small></p>
+
+
+<p>A6 Starship [<s>7000000SC</s>] <small>No Longer for Sale!</small></p>
+<p style="font-style: italic"><small>The short-lived barely and functional attempt of SpaceX before it's collapse in 2052 to create a manned spacecraft with the capability to land on Luna, Mars and other celestial bodies and return to Earth easily. Also avaliable is a replica of the disastrous Starship Luna mission starship, pre-explosion.</small></p>
+
+
+</div>
+
+  
+</body>
+</html>
